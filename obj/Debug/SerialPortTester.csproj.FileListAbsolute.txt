@@ -1,0 +1,10 @@
+E:\Projects\SerialPortTester\bin\Debug\ArduinoSamples.exe.config
+E:\Projects\SerialPortTester\bin\Debug\ArduinoSamples.exe
+E:\Projects\SerialPortTester\bin\Debug\ArduinoSamples.pdb
+E:\Projects\SerialPortTester\obj\Debug\SerialPortTester.csproj.AssemblyReference.cache
+E:\Projects\SerialPortTester\obj\Debug\ArduinoSamples.Form1.resources
+E:\Projects\SerialPortTester\obj\Debug\ArduinoSamples.Properties.Resources.resources
+E:\Projects\SerialPortTester\obj\Debug\SerialPortTester.csproj.GenerateResource.cache
+E:\Projects\SerialPortTester\obj\Debug\SerialPortTester.csproj.CoreCompileInputs.cache
+E:\Projects\SerialPortTester\obj\Debug\ArduinoSamples.exe
+E:\Projects\SerialPortTester\obj\Debug\ArduinoSamples.pdb

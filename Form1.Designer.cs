@@ -38,18 +38,24 @@
             this.cmdSend = new System.Windows.Forms.Button();
             this.serialCommSend = new System.IO.Ports.SerialPort(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmdReceiveDisconnect = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtMessageReceived = new System.Windows.Forms.TextBox();
             this.cmdReceiveConnect = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbRecievePort = new System.Windows.Forms.ComboBox();
             this.serialCommReceive = new System.IO.Ports.SerialPort(this.components);
+            this.lblConnected = new System.Windows.Forms.Label();
+            this.lblSendConnected = new System.Windows.Forms.Label();
+            this.cmdSendDisconnect = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmdSendDisconnect);
+            this.groupBox1.Controls.Add(this.lblSendConnected);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtSendMessage);
             this.groupBox1.Controls.Add(this.cmdSendConnect);
@@ -60,7 +66,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(304, 266);
+            this.groupBox1.Size = new System.Drawing.Size(377, 266);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Send Command";
@@ -80,7 +86,7 @@
             this.txtSendMessage.Multiline = true;
             this.txtSendMessage.Name = "txtSendMessage";
             this.txtSendMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtSendMessage.Size = new System.Drawing.Size(274, 79);
+            this.txtSendMessage.Size = new System.Drawing.Size(342, 98);
             this.txtSendMessage.TabIndex = 5;
             this.txtSendMessage.TextChanged += new System.EventHandler(this.txtMessage_TextChanged);
             // 
@@ -89,7 +95,7 @@
             this.cmdSendConnect.Enabled = false;
             this.cmdSendConnect.Location = new System.Drawing.Point(16, 63);
             this.cmdSendConnect.Name = "cmdSendConnect";
-            this.cmdSendConnect.Size = new System.Drawing.Size(274, 23);
+            this.cmdSendConnect.Size = new System.Drawing.Size(150, 23);
             this.cmdSendConnect.TabIndex = 4;
             this.cmdSendConnect.Text = "Connect using the COM port";
             this.cmdSendConnect.UseVisualStyleBackColor = true;
@@ -128,7 +134,7 @@
             "COM16",
             "COM17",
             "COM18"});
-            this.cmbSendPort.Location = new System.Drawing.Point(159, 22);
+            this.cmbSendPort.Location = new System.Drawing.Point(96, 24);
             this.cmbSendPort.Name = "cmbSendPort";
             this.cmbSendPort.Size = new System.Drawing.Size(121, 21);
             this.cmbSendPort.TabIndex = 2;
@@ -143,7 +149,7 @@
             this.cmdSend.Location = new System.Drawing.Point(2, 230);
             this.cmdSend.Margin = new System.Windows.Forms.Padding(2);
             this.cmdSend.Name = "cmdSend";
-            this.cmdSend.Size = new System.Drawing.Size(300, 34);
+            this.cmdSend.Size = new System.Drawing.Size(373, 34);
             this.cmdSend.TabIndex = 0;
             this.cmdSend.Text = "Send Message";
             this.cmdSend.UseVisualStyleBackColor = false;
@@ -155,19 +161,32 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lblConnected);
+            this.groupBox2.Controls.Add(this.cmdReceiveDisconnect);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txtMessageReceived);
             this.groupBox2.Controls.Add(this.cmdReceiveConnect);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.cmbRecievePort);
-            this.groupBox2.Location = new System.Drawing.Point(326, 6);
+            this.groupBox2.Location = new System.Drawing.Point(387, 6);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(365, 266);
+            this.groupBox2.Size = new System.Drawing.Size(381, 266);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Receive Message";
+            // 
+            // cmdReceiveDisconnect
+            // 
+            this.cmdReceiveDisconnect.Enabled = false;
+            this.cmdReceiveDisconnect.Location = new System.Drawing.Point(188, 63);
+            this.cmdReceiveDisconnect.Name = "cmdReceiveDisconnect";
+            this.cmdReceiveDisconnect.Size = new System.Drawing.Size(162, 23);
+            this.cmdReceiveDisconnect.TabIndex = 7;
+            this.cmdReceiveDisconnect.Text = "Disconnect from the COM port";
+            this.cmdReceiveDisconnect.UseVisualStyleBackColor = true;
+            this.cmdReceiveDisconnect.Click += new System.EventHandler(this.cmdReceiveDisconnect_Click);
             // 
             // label3
             // 
@@ -192,7 +211,7 @@
             this.cmdReceiveConnect.Enabled = false;
             this.cmdReceiveConnect.Location = new System.Drawing.Point(16, 63);
             this.cmdReceiveConnect.Name = "cmdReceiveConnect";
-            this.cmdReceiveConnect.Size = new System.Drawing.Size(274, 23);
+            this.cmdReceiveConnect.Size = new System.Drawing.Size(162, 23);
             this.cmdReceiveConnect.TabIndex = 4;
             this.cmdReceiveConnect.Text = "Connect using the COM port";
             this.cmdReceiveConnect.UseVisualStyleBackColor = true;
@@ -242,17 +261,44 @@
             // 
             this.serialCommReceive.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialCommReceive_DataReceived);
             // 
+            // lblConnected
+            // 
+            this.lblConnected.AutoSize = true;
+            this.lblConnected.Location = new System.Drawing.Point(298, 26);
+            this.lblConnected.Name = "lblConnected";
+            this.lblConnected.Size = new System.Drawing.Size(0, 13);
+            this.lblConnected.TabIndex = 8;
+            // 
+            // lblSendConnected
+            // 
+            this.lblSendConnected.AutoSize = true;
+            this.lblSendConnected.Location = new System.Drawing.Point(240, 28);
+            this.lblSendConnected.Name = "lblSendConnected";
+            this.lblSendConnected.Size = new System.Drawing.Size(0, 13);
+            this.lblSendConnected.TabIndex = 7;
+            // 
+            // cmdSendDisconnect
+            // 
+            this.cmdSendDisconnect.Enabled = false;
+            this.cmdSendDisconnect.Location = new System.Drawing.Point(172, 63);
+            this.cmdSendDisconnect.Name = "cmdSendDisconnect";
+            this.cmdSendDisconnect.Size = new System.Drawing.Size(186, 23);
+            this.cmdSendDisconnect.TabIndex = 8;
+            this.cmdSendDisconnect.Text = "Disconnect from the COM port";
+            this.cmdSendDisconnect.UseVisualStyleBackColor = true;
+            this.cmdSendDisconnect.Click += new System.EventHandler(this.cmdSendDisconnect_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(702, 278);
+            this.ClientSize = new System.Drawing.Size(776, 278);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Arduino Samples";
+            this.Text = "Serial Port Tester";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
@@ -280,6 +326,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbRecievePort;
         private System.IO.Ports.SerialPort serialCommReceive;
+        private System.Windows.Forms.Button cmdReceiveDisconnect;
+        private System.Windows.Forms.Label lblConnected;
+        private System.Windows.Forms.Label lblSendConnected;
+        private System.Windows.Forms.Button cmdSendDisconnect;
     }
 }
 

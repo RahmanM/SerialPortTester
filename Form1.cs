@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ArduinoSamples
@@ -53,6 +54,25 @@ namespace ArduinoSamples
             }
         }
 
+        private void cmdSendDisconnect_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (serialCommSend.IsOpen)
+                {
+                    serialCommSend.Close();
+                    _Connected = false;
+                    lblSendConnected.Text = "OFF";
+                    lblSendConnected.BackColor = Color.Red;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void cmdConnect_Click(object sender, EventArgs e)
         {
             try
@@ -62,6 +82,9 @@ namespace ArduinoSamples
                     serialCommSend.PortName = cmbSendPort.Text;
                     serialCommSend.Open();
                     _Connected = true;
+                    lblSendConnected.Text = "ON";
+                    lblSendConnected.BackColor = Color.Green;
+                    cmdSendDisconnect.Enabled = true;
                 }
                 
             }
@@ -123,6 +146,9 @@ namespace ArduinoSamples
                     serialCommReceive.PortName = cmbRecievePort.Text;
                     serialCommReceive.Open();
                     _ReceiveConnected = true;
+                    cmdReceiveDisconnect.Enabled = true;
+                    lblConnected.Text = "ON";
+                    lblConnected.BackColor = Color.Green;
                 }
 
             }
@@ -141,7 +167,28 @@ namespace ArduinoSamples
             }
         }
 
+        private void cmdReceiveDisconnect_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (serialCommReceive.IsOpen)
+                {
+                    serialCommReceive.Close();
+                    _ReceiveConnected = false;
+                    lblConnected.Text = "OFF";
+                    lblConnected.BackColor = Color.Red;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
         #endregion
+
 
     }
 
