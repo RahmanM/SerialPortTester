@@ -1,0 +1,10 @@
+E:\Projects\ArduinoSamples\bin\Debug\ArduinoSamples.exe.config
+E:\Projects\ArduinoSamples\bin\Debug\ArduinoSamples.exe
+E:\Projects\ArduinoSamples\bin\Debug\ArduinoSamples.pdb
+E:\Projects\ArduinoSamples\obj\Debug\ArduinoSamples.csproj.AssemblyReference.cache
+E:\Projects\ArduinoSamples\obj\Debug\ArduinoSamples.Properties.Resources.resources
+E:\Projects\ArduinoSamples\obj\Debug\ArduinoSamples.csproj.GenerateResource.cache
+E:\Projects\ArduinoSamples\obj\Debug\ArduinoSamples.csproj.CoreCompileInputs.cache
+E:\Projects\ArduinoSamples\obj\Debug\ArduinoSamples.exe
+E:\Projects\ArduinoSamples\obj\Debug\ArduinoSamples.pdb
+E:\Projects\ArduinoSamples\obj\Debug\ArduinoSamples.Form1.resources
